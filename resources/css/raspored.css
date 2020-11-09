@@ -1,0 +1,35 @@
+table{
+    width: 80%;
+    margin: auto;
+    border-collapse: collapse;
+}
+
+th{
+    border-collapse: collapse;
+}
+
+th.dan{
+    text-align: right;
+    font-size: 100%;
+    width: 15%;
+}
+
+th.vrijeme{
+
+}
+
+td{
+    background-color: #e6e8e7;
+    border: 1px solid black;
+    height: 100px;
+    width: 0.5em;
+}
+
+td.popunjeni{
+    background-color: #dee8f0;
+    text-align: center;
+}
+
+p.predmet{
+
+}

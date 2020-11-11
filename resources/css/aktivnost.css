@@ -1,0 +1,55 @@
+html {
+    height: 100%;
+}
+body {
+    height: 100%;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-image: linear-gradient(#b4c8dd,#d5e0ea);
+}
+
+.grid{
+    height: 80%;
+    width: 90%;
+    margin: 5%;
+}
+
+.sporedna{
+    border-radius: 15%;
+    border: 2px solid #466bab;
+    width: 30%;
+    height: 60%;
+    margin-top: 10%;
+    float: left;
+}
+
+#trenutna{
+    border-radius: 5%;
+    border: 2px solid #466bab;
+    width: 33%;
+    height: 70%;
+    margin-top: 4.75%;
+    margin-left: 2%;
+    margin-right: 2%;
+    float: left;
+}
+
+#sljedeca{
+}
+
+p{
+
+    color: #466bab;
+    text-align: center;
+    font-family: Calibri, sans-serif;
+}
+
+p.naziv{
+    margin-top: 25%;
+    font-size: 3em;
+}
+
+p.vrijeme{
+    font-size: 2em;
+}

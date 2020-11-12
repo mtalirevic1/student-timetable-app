@@ -1,6 +1,7 @@
 html {
-    height: 100%;
+    height: 90%;
 }
+
 body {
     height: 100%;
     margin: 0;
@@ -18,7 +19,7 @@ body {
 .sporedna{
     border-radius: 15%;
     border: 2px solid #466bab;
-    width: 30%;
+    width: 25%;
     height: 60%;
     margin-top: 10%;
     float: left;
@@ -27,22 +28,29 @@ body {
 #trenutna{
     border-radius: 5%;
     border: 2px solid #466bab;
-    width: 33%;
-    height: 70%;
+    width: 28%;
+    height: 73.5%;
     margin-top: 4.75%;
     margin-left: 2%;
     margin-right: 2%;
     float: left;
 }
 
+#prethodna{
+    margin-left: 5%;
+}
+
 #sljedeca{
 }
 
-p{
-
+p, legend{
     color: #466bab;
     text-align: center;
     font-family: Calibri, sans-serif;
+}
+
+legend{
+    font-size: 2.5em;
 }
 
 p.naziv{
@@ -52,4 +60,8 @@ p.naziv{
 
 p.vrijeme{
     font-size: 2em;
+}
+
+#trenutna p.naziv{
+    margin-top: 20%;
 }

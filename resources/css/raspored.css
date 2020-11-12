@@ -1,6 +1,7 @@
+
 table{
     width: 85%;
-    margin: auto;
+    margin: 5% auto;
     border-collapse: collapse;
     table-layout: fixed;
 }

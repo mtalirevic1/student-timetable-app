@@ -1,3 +1,31 @@
 body{
     font-size: 62.5%; /*najlakse raditi sa em jedinicama 1em=10px*/
+    margin: 0;
+    padding: 0;
+}
+
+ul.meni{
+    list-style-type: none;
+    margin: 0;
+    background-color: #466bab;
+    display: inline-block;
+    width: 100%;
+    align-content: center;
+}
+
+ul.meni li{
+    display: inline;
+    padding: 2%;
+}
+
+ul.meni a:hover{
+    color: #466bab;
+    background-color: #d5e0ea;
+}
+
+ul.meni a{
+    text-decoration: none;
+    font-size: 2.5em;
+    font-family: Calibri, sans-serif;
+    color: #b4c8dd;
 }

@@ -65,3 +65,12 @@ p.vrijeme{
 #trenutna p.naziv{
     margin-top: 20%;
 }
+
+@media (max-width: 600px) {
+    #prethodna{
+        display: none;
+    }
+    #trenutna, #sljedeca{
+        width: 50%;
+    }
+}

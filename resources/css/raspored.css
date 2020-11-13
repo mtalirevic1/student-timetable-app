@@ -15,7 +15,8 @@ th.dan{
     text-align: right;
     font-size: 2.2em;
     font-family: "Lucida Sans Typewriter", sans-serif;
-    padding-right: 1%;
+    border-right: 1px solid black;
+    padding-right: 2%;
 }
 
 th.vrijeme{
@@ -59,4 +60,34 @@ p.aktivnost{
 
 .isprekidano:nth-of-type(2n){
     border-left: 1px dashed black;
+}
+
+@media (max-width: 600px) {
+    th.vrijeme{
+        display: none;
+    }
+    th.dan{
+        border: none;
+    }
+    td.prazni{
+        display: none;
+        border: none;
+    }
+    td.popunjeni{
+        border: 1px solid black;
+        width:145px;
+    }
+
+    tr > *{
+        display: block;
+        width:100%
+    }
+
+    .isprekidano:nth-of-type(2n+1){
+        border-left: none;
+    }
+
+    .isprekidano:nth-of-type(2n){
+        border-left: none;
+    }
 }

@@ -4,6 +4,7 @@ table{
     margin: 5% auto;
     border-collapse: collapse;
     table-layout: fixed;
+    border-right: 1px solid black;
 }
 
 th{
@@ -19,6 +20,10 @@ th.dan{
     padding-right: 2%;
 }
 
+.wide{
+    width: 165px;
+}
+
 th.vrijeme{
     font-size: 1.8em;
     font-family: Calibri, sans-serif;
@@ -26,13 +31,15 @@ th.vrijeme{
     border-right: hidden;
 }
 
+th.prvoVrijeme{
+    margin-left: 10%;
+}
 
 td{
     background-color: #e6e8e7;
     border-top: 1px solid black;
     border-bottom: 1px solid black;
     height: 8em;
-    width: 2%;
 }
 
 td.popunjeni{
@@ -55,14 +62,17 @@ p.aktivnost{
 }
 
 .isprekidano:nth-of-type(2n+1){
-    border-left: 1px solid black;
+    border-right: 1px solid black;
 }
 
 .isprekidano:nth-of-type(2n){
-    border-left: 1px dashed black;
+    border-right: 1px dashed black;
 }
 
 @media (max-width: 600px) {
+    table{
+        border-right: none;
+    }
     th.vrijeme{
         display: none;
     }
@@ -89,5 +99,9 @@ p.aktivnost{
 
     .isprekidano:nth-of-type(2n){
         border-left: none;
+    }
+
+    .wide{
+        width: auto;
     }
 }

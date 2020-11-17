@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="bs">
+<head>
+    <meta charset="UTF-8">
+    <title>Planiranje nastavnik</title>
+    <link rel="stylesheet" type="text/css" href="resources/css/planiranjeNastavnik.css" media="screen"/>
+    <link rel="stylesheet" type="text/css" href="resources/css/general.css" media="screen"/>
+</head>
+<body>
+<ul class="meni">
+    <li><a href="raspored.html">Raspored</a></li>
+    <li><a href="aktivnost.html">Aktivnost</a></li>
+    <li><a href="planiranjeNastavnik.html">Planiranje nastavnik</a></li>
+    <li><a href="podaciStudent.html">Podaci studenata</a></li>
+</ul>
+<div class="cont">
+    <form>
+        <ul class="forma">
+            <li>
+                <label for="naziv">Naziv predmeta:</label>
+                <input type="text" id="naziv">
+            </li>
+            <li>
+                <label for="tip">Tip:</label>
+                <select id="tip" size="1">
+                    <option value="predavanje">Predavanje</option>
+                    <option value="vjezbe">Vježbe</option>
+                </select>
+            </li>
+            <li>
+                <label for="v_pocetka">Vrijeme početka:</label>
+                <input type="time" id="v_pocetka">
+            </li>
+            <li>
+                <label for="v_kraja">Vrijeme kraja:</label>
+                <input type="time" id="v_kraja">
+            </li>
+            <li>
+                <label for="dan">Dan u sedmici:</label>
+                <select id="dan" size="1">
+                    <option value="pon">Ponedjeljak</option>
+                    <option value="uto">Utorak</option>
+                    <option value="sri">Srijeda</option>
+                    <option value="cet">Četvrtak</option>
+                    <option value="pet">Petak</option>
+                </select>
+            </li>
+        </ul>
+    </form>
+</div>
+</body>
+</html>

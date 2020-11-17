@@ -1,0 +1,18 @@
+table{
+    width: 25%;
+    margin: 5% auto;
+    border-collapse: collapse;
+    table-layout: fixed;
+    font-family: Calibri, sans-serif;
+    font-size: 2em;
+    text-align: center;
+}
+
+td{
+    border: 1px solid black;
+    padding: 1%;
+}
+
+tr:hover{
+    border: 2px solid black;
+}

@@ -1,0 +1,65 @@
+html{
+    height: 90%;
+}
+
+body{
+    height: 100%;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-image: linear-gradient(#b4c8dd,#d5e0ea);
+}
+
+.cont{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    box-sizing: border-box;
+    height: 100%;
+}
+
+form{
+    width: 60%;
+    height: 50%;
+}
+
+input, select, label{
+    display: inline-block;
+    font-family: Calibri, sans-serif;
+    color: #466bab;
+}
+
+input, select{
+    padding: 0.5%
+}
+
+label{
+    width: 30%;
+    text-align: right;
+    font-size: 2em;
+    padding: 2%;
+    margin-left: 10%;
+}
+
+ul.forma{
+    list-style: none;
+    height: 90%;
+    width: 100%;
+}
+
+@media (max-width: 600px) {
+    form{
+        width: 100%;
+        height: 90%;
+    }
+    label {
+        margin-top: 4%;
+        text-align: left;
+        margin-left: 0;
+    }
+
+    input, select{
+        margin-right: 60%
+    }
+}

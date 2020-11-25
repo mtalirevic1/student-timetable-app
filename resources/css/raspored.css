@@ -16,12 +16,10 @@ th.dan{
     text-align: right;
     font-size: 2.2em;
     font-family: "Lucida Sans Typewriter", sans-serif;
-    border-right: 1px solid black;
-    padding-right: 2%;
 }
 
 .wide{
-    width: 165px;
+    width: 250px;
 }
 
 th.vrijeme{
@@ -40,6 +38,10 @@ td{
     border-top: 1px solid black;
     border-bottom: 1px solid black;
     height: 8em;
+}
+
+th.nevidljivi{
+    border: none;
 }
 
 td.popunjeni{
@@ -61,12 +63,14 @@ p.aktivnost{
     margin-bottom: 2em;
 }
 
-.isprekidano:nth-of-type(2n+1){
+.solidno{
     border-right: 1px solid black;
+    border-left: 1px dashed black;
 }
 
-.isprekidano:nth-of-type(2n){
+.isprekidano{
     border-right: 1px dashed black;
+    border-left: 1px solid black;
 }
 
 @media (max-width: 600px) {
@@ -93,12 +97,9 @@ p.aktivnost{
         width:100%
     }
 
-    .isprekidano:nth-of-type(2n+1){
+    .isprekidano, .solidno{
         border-left: none;
-    }
-
-    .isprekidano:nth-of-type(2n){
-        border-left: none;
+        border-right: none;
     }
 
     .wide{

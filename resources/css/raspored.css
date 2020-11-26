@@ -29,10 +29,6 @@ th.vrijeme{
     border-right: hidden;
 }
 
-th.prvoVrijeme{
-    margin-left: 10%;
-}
-
 td{
     background-color: #e6e8e7;
     border-top: 1px solid black;
@@ -47,6 +43,11 @@ th.nevidljivi{
 td.popunjeni{
     background-color: #dee8f0;
     text-align: center;
+}
+
+td.skriveni{
+    display: none;
+    border: none;
 }
 
 p{
@@ -80,16 +81,19 @@ p.aktivnost{
     th.vrijeme{
         display: none;
     }
+
     th.dan{
-        border: none;
+        text-align: center;
     }
+
     td.prazni{
         display: none;
         border: none;
     }
     td.popunjeni{
         border: 1px solid black;
-        width:145px;
+        width:240px;
+        margin: auto;
     }
 
     tr > *{

@@ -17,13 +17,22 @@ function validanTermin(pocetak, kraj){
 
 let pocetniSat = undefined;
 let krajnjiSat = undefined;
+let nizDana = undefined;
 
 let Raspored = (function () {
     let iscrtajRaspored = function (div, dani, satPocetak, satKraj) {
+        if(div == null){
+            return;
+        }
         if (!validanSat(satPocetak) || !validanSat(satKraj) || satPocetak >= satKraj) {
             div.innerHTML = "Greška";
             return;
         }
+        if(dani == null || dani.length === 0){
+            div.innerHTML = "Greška";
+            return;
+        }
+        nizDana=dani;
         pocetniSat = satPocetak;
         krajnjiSat = satKraj;
         let rasporedTable = document.createElement('table');
@@ -33,7 +42,6 @@ let Raspored = (function () {
         col.classList.add('wide');
         colGroup.appendChild(col);
         rasporedTable.appendChild(colGroup);
-
         let brojKolona = satKraj - satPocetak;
         const brojRedova = dani.length;
         let trenutniSat = satPocetak;
@@ -44,7 +52,6 @@ let Raspored = (function () {
             celijaVremena.setAttribute('colspan', '2');
             celijaVremena.classList.add('vrijeme');
             if (trebaIspisati(trenutniSat)) {
-                console.log("Trenutni sat: " + trenutniSat);
                 if (trenutniSat < 10) {
                     celijaVremena.innerHTML = "0" + trenutniSat + ":00";
                 } else {
@@ -89,9 +96,49 @@ let Raspored = (function () {
             alert('Greška - raspored nije kreiran');
             return;
         }
-        if(validanTermin(vrijemePocetak,vrijemeKraj)){
+        if(!validanTermin(vrijemePocetak,vrijemeKraj)){
             alert('Greška - nevalidan termin');
             return;
+        }
+        if(nizDana === undefined || nizDana.length === 0){
+            alert('Greška - dani rasporeda nisu definisani');
+            return;
+        }
+        if(!nizDana.includes(dan)){
+            alert('Greška - nevalidan dan');
+            return;
+        }
+        let trazeniRed=raspored.getElementsByTagName('table').item(0)
+            .getElementsByTagName('tr').item(nizDana.indexOf(dan)+1); //korekcija za 1 zbog reda sati
+        let indeksPocetka=2*(vrijemePocetak-pocetniSat)+2; //korekcija za 2 celije u redu koje nisu dio prostora za aktivnosti
+        let indeksKraja=2*(vrijemeKraj-pocetniSat)+2;
+        let trenutnaCelija;
+        for(let i=indeksPocetka; i<indeksKraja; i++) {
+            trenutnaCelija=trazeniRed.getElementsByTagName('td').item(i);
+            if(trenutnaCelija.classList.contains('popunjeni') || trenutnaCelija.classList.contains('skriveni')){
+                alert('Greška - popunjen termin');
+                return;
+            }
+        }
+        //popunjavanje celije aktivnosti
+        trenutnaCelija=trazeniRed.getElementsByTagName('td').item(indeksPocetka);
+        let krajnjaCelija=trazeniRed.getElementsByTagName('td').item(indeksKraja-1);
+        trenutnaCelija.classList.remove('prazni');
+        trenutnaCelija.classList.add('popunjeni');
+        let nazivPredmeta = document.createElement('p');
+        nazivPredmeta.classList.add('predmet');
+        nazivPredmeta.innerHTML=naziv;
+        let tipAktivnosti = document.createElement('p');
+        tipAktivnosti.classList.add('aktivnost');
+        tipAktivnosti.innerHTML=tip;
+        trenutnaCelija.appendChild(nazivPredmeta);
+        trenutnaCelija.appendChild(tipAktivnosti);
+        trenutnaCelija.setAttribute('colspan', (indeksKraja-indeksPocetka)+"");
+        console.log(trenutnaCelija);
+        indeksPocetka++;
+        for(let i=indeksPocetka; i<indeksKraja; i++){
+            trenutnaCelija=trazeniRed.getElementsByTagName('td').item(i);
+            trenutnaCelija.classList.add('skriveni');
         }
     }
 

@@ -32,9 +32,11 @@ let Raspored = (function () {
             div.innerHTML = "Greška";
             return;
         }
+        //postavljanje globalnih parametara rasporeda
         nizDana=dani;
         pocetniSat = satPocetak;
         krajnjiSat = satKraj;
+        //generisanje tabele
         let rasporedTable = document.createElement('table');
         rasporedTable.classList.add('table');
         let colGroup = document.createElement('colgroup');
@@ -88,8 +90,7 @@ let Raspored = (function () {
             rasporedTable.appendChild(redAktivnosti);
         }
         div.appendChild(rasporedTable);
-        console.log(div);
-    }
+    };
 
     let dodajAktivnost = function (raspored, naziv, tip, vrijemePocetak, vrijemeKraj, dan) {
         if(raspored == null || !raspored.hasChildNodes()){
@@ -122,7 +123,6 @@ let Raspored = (function () {
         }
         //popunjavanje celije aktivnosti
         trenutnaCelija=trazeniRed.getElementsByTagName('td').item(indeksPocetka);
-        let krajnjaCelija=trazeniRed.getElementsByTagName('td').item(indeksKraja-1);
         trenutnaCelija.classList.remove('prazni');
         trenutnaCelija.classList.add('popunjeni');
         let nazivPredmeta = document.createElement('p');
@@ -134,13 +134,13 @@ let Raspored = (function () {
         trenutnaCelija.appendChild(nazivPredmeta);
         trenutnaCelija.appendChild(tipAktivnosti);
         trenutnaCelija.setAttribute('colspan', (indeksKraja-indeksPocetka)+"");
-        console.log(trenutnaCelija);
         indeksPocetka++;
+        //sakrivanje viska celija
         for(let i=indeksPocetka; i<indeksKraja; i++){
             trenutnaCelija=trazeniRed.getElementsByTagName('td').item(i);
             trenutnaCelija.classList.add('skriveni');
         }
-    }
+    };
 
     return {
         iscrtajRaspored: iscrtajRaspored,

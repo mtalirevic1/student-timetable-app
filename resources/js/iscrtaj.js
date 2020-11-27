@@ -89,24 +89,20 @@ export function iscrtajRaspored(div, dani, satPocetak, satKraj) {
         rasporedTable.appendChild(redAktivnosti);
     }
     div.appendChild(rasporedTable);
-};
+}
 
 export function dodajAktivnost(raspored, naziv, tip, vrijemePocetak, vrijemeKraj, dan) {
     if(raspored == null || !raspored.hasChildNodes()){
-        alert('Greška - raspored nije kreiran');
-        return;
+        return 'Greška - raspored nije kreiran';
     }
     if(!validanTermin(vrijemePocetak,vrijemeKraj)){
-        alert('Greška - nevalidan termin');
-        return;
+        return 'Greška - nevalidan termin';
     }
     if(nizDana === undefined || nizDana.length === 0){
-        alert('Greška - dani rasporeda nisu definisani');
-        return;
+        return 'Greška - dani rasporeda nisu definisani';
     }
     if(!nizDana.includes(dan)){
-        alert('Greška - nevalidan dan');
-        return;
+        return 'Greška - nevalidan dan';
     }
     let trazeniRed=raspored.getElementsByTagName('table').item(0)
         .getElementsByTagName('tr').item(nizDana.indexOf(dan)+1); //korekcija za 1 zbog reda sati
@@ -116,8 +112,7 @@ export function dodajAktivnost(raspored, naziv, tip, vrijemePocetak, vrijemeKraj
     for(let i=indeksPocetka; i<indeksKraja; i++) {
         trenutnaCelija=trazeniRed.getElementsByTagName('td').item(i);
         if(trenutnaCelija.classList.contains('popunjeni') || trenutnaCelija.classList.contains('skriveni')){
-            alert('Greška - popunjen termin');
-            return;
+            return 'Greška - popunjen termin';
         }
     }
     //popunjavanje celije aktivnosti

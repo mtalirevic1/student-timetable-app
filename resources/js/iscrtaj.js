@@ -12,7 +12,7 @@ function polaIliCijeli(sat){
 }
 
 function validanTermin(pocetak, kraj){
-    return polaIliCijeli(pocetak) && polaIliCijeli(kraj) && pocetak>=pocetniSat && kraj<=krajnjiSat;
+    return polaIliCijeli(pocetak) && polaIliCijeli(kraj) && pocetak>=pocetniSat && kraj<=krajnjiSat && pocetak<kraj;
 }
 
 let pocetniSat = undefined;
@@ -95,24 +95,21 @@ export function dodajAktivnost(raspored, naziv, tip, vrijemePocetak, vrijemeKraj
     if(raspored == null || !raspored.hasChildNodes()){
         return 'Greška - raspored nije kreiran';
     }
-    if(!validanTermin(vrijemePocetak,vrijemeKraj)){
-        return 'Greška - nevalidan termin';
-    }
     if(nizDana === undefined || nizDana.length === 0){
         return 'Greška - dani rasporeda nisu definisani';
     }
-    if(!nizDana.includes(dan)){
-        return 'Greška - nevalidan dan';
+    if(!nizDana.includes(dan) || !validanTermin(vrijemePocetak,vrijemeKraj)){
+        return 'Greška - u rasporedu ne postoji dan ili vrijeme u kojem pokušavate dodati termin';
     }
     let trazeniRed=raspored.getElementsByTagName('table').item(0)
         .getElementsByTagName('tr').item(nizDana.indexOf(dan)+1); //korekcija za 1 zbog reda sati
-    let indeksPocetka=2*(vrijemePocetak-pocetniSat)+2; //korekcija za 2 celije u redu koje nisu dio prostora za aktivnosti
-    let indeksKraja=2*(vrijemeKraj-pocetniSat)+2;
+    let indeksPocetka=2*(vrijemePocetak-pocetniSat);
+    let indeksKraja=2*(vrijemeKraj-pocetniSat);
     let trenutnaCelija;
     for(let i=indeksPocetka; i<indeksKraja; i++) {
         trenutnaCelija=trazeniRed.getElementsByTagName('td').item(i);
         if(trenutnaCelija.classList.contains('popunjeni') || trenutnaCelija.classList.contains('skriveni')){
-            return 'Greška - popunjen termin';
+            return 'Greška - već postoji termin u rasporedu u zadanom vremenu';
         }
     }
     //popunjavanje celije aktivnosti
@@ -134,4 +131,5 @@ export function dodajAktivnost(raspored, naziv, tip, vrijemePocetak, vrijemeKraj
         trenutnaCelija=trazeniRed.getElementsByTagName('td').item(i);
         trenutnaCelija.classList.add('skriveni');
     }
+    return '';
 }

@@ -140,5 +140,3 @@ let Raspored = (function () {
         dodajAktivnost: dodajAktivnost
     }
 }());
-
-export default Raspored;

@@ -5,8 +5,8 @@
     <meta name = "viewport" content = "width=device-width, initial-scale=1.0" />
     <title>Iscrtaj testovi</title>
     <link rel="stylesheet" href="https://unpkg.com/mocha/mocha.css" />
-    <link rel="stylesheet" href="../resources/css/raspored.css" media="screen"/>
-    <link rel="stylesheet" href="../resources/css/general.css" media="screen"/>
+    <link rel="stylesheet" href="../public/resources/css/raspored.css" media="screen"/>
+    <link rel="stylesheet" href="../public/resources/css/general.css" media="screen"/>
 </head>
 <body>
 <div id="ispis"></div>
@@ -19,7 +19,7 @@
     mocha.setup('bdd');
     mocha.checkLeaks();
 </script>
-<script src="../resources/js/iscrtajModul.js"></script>
+<script src="../public/resources/js/iscrtajModul.js"></script>
 <script src="iscrtajTest.js"></script>
 <script class="mocha-exec">
     mocha.run();

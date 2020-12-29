@@ -3,7 +3,7 @@ function polaIliCijeli(sat) {
 }
 
 function validanSat(sat) {
-    return Number.isInteger(sat) && sat >= 0 && sat <= 24 && polaIliCijeli(sat);
+    return Number.isInteger(sat) && sat >= 8 && sat <= 20 && polaIliCijeli(sat);
 }
 
 //{naziv:string,tip:string,pocetak:integer,kraj:integer,dan:string}

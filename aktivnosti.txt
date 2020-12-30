@@ -1,4 +1,3 @@
 WT,predavanje,13,15,Ponedjeljak
 PJP,vježbe,12,16,Petak
 OOI,predavanje,9,13,Četvrtak
-PLS,vjezba,17,18,Srijeda

@@ -43,9 +43,11 @@ function jsonToCsvAktivnosti(jsonNiz) {
 }
 
 function jsonToCsvPredmeti(jsonNiz) {
+    console.log("jsonNiz: "+jsonNiz);
     let rezultat = "";
     for (let i = 0; i < jsonNiz.length; i++) {
-        rezultat += jsonNiz[i].naziv + "\r\n";
+        let a=jsonNiz[i];
+        rezultat += jsonNiz[i] + "\r\n";
     }
     return rezultat;
 }
@@ -109,10 +111,15 @@ app.delete('/aktivnost/:naziv', function (req, res) {
             res.json({message: "Greška - aktivnost nije obrisana!"});
         } else {
             let aktivnosti = csvToJsonAktivnosti(data.toString());
-            let filtrirajPoNazivu = function (naziv) {
-                return naziv !== req.params.naziv;
+            let filtrirajPoNazivu = function (aktivnost) {
+                return aktivnost.naziv !== req.params.naziv;
             };
-            let csvString = jsonToCsvAktivnosti(aktivnosti.filter(filtrirajPoNazivu));
+            let noveAktivnosti=aktivnosti.filter(filtrirajPoNazivu);
+            if(noveAktivnosti.length===aktivnosti.length){
+                res.json({message: "Greška - aktivnost nije obrisana!"});
+                return;
+            }
+            let csvString = jsonToCsvAktivnosti(noveAktivnosti);
             fs.writeFile('aktivnosti.txt', csvString, function (err){
                 if(err){
                     res.json({message: "Greška - aktivnost nije obrisana!"});
@@ -133,7 +140,12 @@ app.delete('/predmet/:naziv', function (req, res) {
             let filtrirajPoNazivu = function (naziv) {
                 return naziv !== req.params.naziv;
             };
-            let csvString = jsonToCsvPredmeti(predmeti.filter(filtrirajPoNazivu));
+            let noviPredmeti=predmeti.filter(filtrirajPoNazivu);
+            if(noviPredmeti.length===predmeti.length){
+                res.json({message: "Greška - predmet nije obrisan!"});
+                return;
+            }
+            let csvString = jsonToCsvPredmeti(noviPredmeti);
             fs.writeFile('predmeti.txt', csvString, function (err){
                 if(err){
                     res.json({message: "Greška - predmet nije obrisan!"});

@@ -20,13 +20,11 @@ function dajNizDostupnostiTermina(nizAktivnosti) {
     return nizTermina;
 }
 
-let Validacija = (function () {
-
-    let postojiPredmet = function (nizPredmeta, predmet) {
-        return nizPredmeta.contains(predmet);
-    }
-
-    let validnaAktivnost = function (nizPredmeta ,nizAktivnosti, aktivnost) {
+module.exports = {
+    postojiPredmet: function (nizPredmeta, predmet) {
+        return nizPredmeta.includes(predmet);
+    },
+    validnaAktivnost: function (nizPredmeta, nizAktivnosti, aktivnost) {
         if (!postojiPredmet(nizPredmeta, aktivnost.naziv) || !validanSat(aktivnost.pocetak) || !validanSat(aktivnost.kraj) ||
             aktivnost.pocetak >= aktivnost.kraj) {
             return false;
@@ -39,9 +37,4 @@ let Validacija = (function () {
         }
         return true;
     }
-
-    return {
-        validnaAktivnost: validnaAktivnost,
-        postojiPredmet: postojiPredmet
-    }
-}());
+};

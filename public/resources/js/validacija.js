@@ -8,28 +8,48 @@ function validanSat(sat) {
 
 //{naziv:string,tip:string,pocetak:integer,kraj:integer,dan:string}
 function dajNizDostupnostiTermina(nizAktivnosti) {
-    let nizTermina = []
-    for (let i = 0; i <= 24; i += 0.5) {
-        nizTermina[i] = true;
+    let daniAktivnosti = [];
+    for (let i = 0; i < nizAktivnosti.length; i++) {
+        if (!daniAktivnosti.includes(nizAktivnosti[i].dan)) {
+            let dan = {dan: nizAktivnosti[i].dan};
+            dan.termini = [];
+            daniAktivnosti.push(dan);
+        }
+    }
+    for (let k = 0; k < daniAktivnosti.length; k++) {
+        for (let i = 0; i <= 24; i += 0.5) {
+            daniAktivnosti[k].termini[i] = true;
+        }
     }
     nizAktivnosti.forEach(function (aktivnost) {
-        for (let i = aktivnost.pocetak; i <= aktivnost.kraj; i += 0.5) {
-            nizTermina[i] = false;
+        for (let k = 0; k < daniAktivnosti.length; k++) {
+            if(aktivnost.dan===daniAktivnosti[k].dan) {
+                for (let i = aktivnost.pocetak; i <= aktivnost.kraj; i += 0.5) {
+                    daniAktivnosti[k].termini[i] = false;
+                }
+            }
         }
     });
-    return nizTermina;
+    return daniAktivnosti;
 }
 
 module.exports = {
     postojiPredmet: function (nizPredmeta, predmet) {
         return nizPredmeta.includes(predmet);
     },
-    validnaAktivnost: function (nizPredmeta, nizAktivnosti, aktivnost) {
-        if (!postojiPredmet(nizPredmeta, aktivnost.naziv) || !validanSat(aktivnost.pocetak) || !validanSat(aktivnost.kraj) ||
-            aktivnost.pocetak >= aktivnost.kraj) {
+    validnaAktivnost: function (nizAktivnosti, aktivnost) {
+        if (!validanSat(aktivnost.pocetak) || !validanSat(aktivnost.kraj) || aktivnost.pocetak >= aktivnost.kraj) {
             return false;
         }
-        let termini = dajNizDostupnostiTermina(nizAktivnosti);
+
+        let daniAktivnosti = dajNizDostupnostiTermina(nizAktivnosti);
+        let termini = []
+        for(let i=0; i<daniAktivnosti.length;i++){
+            if(daniAktivnosti[i].dan===aktivnost.dan){
+                termini = daniAktivnosti[i].termini;
+                break;
+            }
+        }
         for (let i = aktivnost.pocetak; i <= aktivnost.kraj; i += 0.5) {
             if (termini[i] === false) {
                 return false;

@@ -8,6 +8,9 @@ app.use(bodyParser.json());
 
 function csvToJsonAktivnosti(string) {
     let rezultat = [];
+    if (string === null || string === undefined) {
+        return rezultat;
+    }
     let nizAktivnosti = string.split('\r\n');
     let duzina = nizAktivnosti.length - 1;
     for (let i = 0; i < duzina; i++) {
@@ -25,6 +28,9 @@ function csvToJsonAktivnosti(string) {
 
 function csvToJsonPredmeti(string) {
     let rezultat = [];
+    if (string === null || string === undefined) {
+        return rezultat;
+    }
     let nizPredemta = string.split('\r\n');
     let duzina = nizPredemta.length - 1;
     for (let i = 0; i < duzina; i++) {
@@ -35,6 +41,9 @@ function csvToJsonPredmeti(string) {
 
 function jsonToCsvAktivnosti(jsonNiz) {
     let rezultat = "";
+    if (jsonNiz === null || jsonNiz === undefined) {
+        return rezultat;
+    }
     for (let i = 0; i < jsonNiz.length; i++) {
         let a = jsonNiz[i];
         rezultat += a.naziv + "," + a.tip + "," + a.pocetak + "," + a.kraj + "," + a.dan + "\r\n";
@@ -43,10 +52,11 @@ function jsonToCsvAktivnosti(jsonNiz) {
 }
 
 function jsonToCsvPredmeti(jsonNiz) {
-    console.log("jsonNiz: "+jsonNiz);
     let rezultat = "";
+    if (jsonNiz === null || jsonNiz === undefined) {
+        return rezultat;
+    }
     for (let i = 0; i < jsonNiz.length; i++) {
-        let a=jsonNiz[i];
         rezultat += jsonNiz[i] + "\r\n";
     }
     return rezultat;
@@ -114,17 +124,16 @@ app.delete('/aktivnost/:naziv', function (req, res) {
             let filtrirajPoNazivu = function (aktivnost) {
                 return aktivnost.naziv !== req.params.naziv;
             };
-            let noveAktivnosti=aktivnosti.filter(filtrirajPoNazivu);
-            if(noveAktivnosti.length===aktivnosti.length){
+            let noveAktivnosti = aktivnosti.filter(filtrirajPoNazivu);
+            if (noveAktivnosti.length === aktivnosti.length) {
                 res.json({message: "Greška - aktivnost nije obrisana!"});
                 return;
             }
             let csvString = jsonToCsvAktivnosti(noveAktivnosti);
-            fs.writeFile('aktivnosti.txt', csvString, function (err){
-                if(err){
+            fs.writeFile('aktivnosti.txt', csvString, function (err) {
+                if (err) {
                     res.json({message: "Greška - aktivnost nije obrisana!"});
-                }
-                else{
+                } else {
                     res.json({message: "Uspješno obrisana aktivnost!"});
                 }
             });
@@ -140,17 +149,16 @@ app.delete('/predmet/:naziv', function (req, res) {
             let filtrirajPoNazivu = function (naziv) {
                 return naziv !== req.params.naziv;
             };
-            let noviPredmeti=predmeti.filter(filtrirajPoNazivu);
-            if(noviPredmeti.length===predmeti.length){
+            let noviPredmeti = predmeti.filter(filtrirajPoNazivu);
+            if (noviPredmeti.length === predmeti.length) {
                 res.json({message: "Greška - predmet nije obrisan!"});
                 return;
             }
             let csvString = jsonToCsvPredmeti(noviPredmeti);
-            fs.writeFile('predmeti.txt', csvString, function (err){
-                if(err){
+            fs.writeFile('predmeti.txt', csvString, function (err) {
+                if (err) {
                     res.json({message: "Greška - predmet nije obrisan!"});
-                }
-                else{
+                } else {
                     res.json({message: "Uspješno obrisan predmet!"});
                 }
             });
@@ -158,16 +166,14 @@ app.delete('/predmet/:naziv', function (req, res) {
     });
 });
 app.delete('/all', function (req, res) {
-    fs.writeFile('aktivnosti.txt', "", function (err){
-        if(err){
+    fs.writeFile('aktivnosti.txt', "", function (err) {
+        if (err) {
             res.json({message: "Greška - sadržaj datoteka nije moguće obrisati!"});
-        }
-        else{
-            fs.writeFile('predmeti.txt', "", function (err){
-                if(err){
+        } else {
+            fs.writeFile('predmeti.txt', "", function (err) {
+                if (err) {
                     res.json({message: "Greška - sadržaj datoteka nije moguće obrisati!"});
-                }
-                else{
+                } else {
                     res.json({message: "Uspješno obrisan sadržaj datoteka!"});
                 }
             });

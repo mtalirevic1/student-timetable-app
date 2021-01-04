@@ -34,7 +34,7 @@ function csvToJsonPredmeti(string) {
     let nizPredemta = string.split('\r\n');
     let duzina = nizPredemta.length - 1;
     for (let i = 0; i < duzina; i++) {
-        rezultat.push(nizPredemta[i]);
+        rezultat.push({naziv: nizPredemta[i]});
     }
     return rezultat;
 }
@@ -57,7 +57,7 @@ function jsonToCsvPredmeti(jsonNiz) {
         return rezultat;
     }
     for (let i = 0; i < jsonNiz.length; i++) {
-        rezultat += jsonNiz[i] + "\r\n";
+        rezultat += jsonNiz[i].naziv + "\r\n";
     }
     return rezultat;
 }
@@ -147,7 +147,7 @@ app.delete('/predmet/:naziv', function (req, res) {
         } else {
             let predmeti = csvToJsonPredmeti(data.toString());
             let filtrirajPoNazivu = function (naziv) {
-                return naziv !== req.params.naziv;
+                return naziv.naziv !== req.params.naziv;
             };
             let noviPredmeti = predmeti.filter(filtrirajPoNazivu);
             if (noviPredmeti.length === predmeti.length) {
@@ -180,4 +180,4 @@ app.delete('/all', function (req, res) {
         }
     });
 });
-app.listen(3000);
+module.exports = app.listen(3000);

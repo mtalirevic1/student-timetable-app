@@ -14,11 +14,14 @@ function csvToJsonTestni(csvString) {
     let rezultat = [];
     let nizSlucajeva = csvString.split('\r\n');
     let toJson = function (slucajString) {
-        let brojac = 0;
+        let balansSrednjih = 0, balansViticastih = 0;
         for (let i = 0; i < slucajString.length; i++) {
+            if(slucajString.charAt(i)==='[') balansSrednjih++;
+            if(slucajString.charAt(i)===']') balansSrednjih--;
+            if(slucajString.charAt(i)==='{') balansViticastih++;
+            if(slucajString.charAt(i)==='}') balansViticastih--;
             if (slucajString.charAt(i) === ',') {
-                brojac++;
-                if (brojac > 3) {
+                if (balansViticastih>0 || balansSrednjih>0) {
                     slucajString = slucajString.replaceAt(i, '|');
                 }
             }
@@ -37,7 +40,6 @@ function csvToJsonTestni(csvString) {
 function izvrsiTest(ts, i) {
     describe("Test " + (i + 1) + ", Method: " + ts.metoda + ", Route: " + ts.ruta + ", Input: " + ts.ulaz, function () {
         it("should give the following output: " + ts.izlaz, function (done) {
-            console.log(ts);
             if (ts.metoda === 'GET' && (ts.ruta === '/predmet' || ts.ruta === '/aktivnost')) {
                 chai.request(app).get(ts.ruta + "i").end(function (err, res) {
                     expect(JSON.stringify(res.body)).to.equals(ts.izlaz);

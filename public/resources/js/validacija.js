@@ -38,7 +38,12 @@ function dajNizDostupnostiTermina(nizAktivnosti) {
 
 module.exports = {
     postojiPredmet: function (nizPredmeta, predmet) {
-        return nizPredmeta.includes(predmet);
+        for(let i=0; i<nizPredmeta.length; i++){
+            if(nizPredmeta[i].naziv===predmet.naziv){
+                return true;
+            }
+        }
+        return false;
     },
     validnaAktivnost: function (nizAktivnosti, aktivnost) {
         if (!validanSat(aktivnost.pocetak) || !validanSat(aktivnost.kraj) || aktivnost.pocetak >= aktivnost.kraj) {

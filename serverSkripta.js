@@ -78,8 +78,8 @@ app.get('/predmet/:naziv/aktivnost/', function (req, res) {
     fs.readFile('aktivnosti.txt', function (err, data) {
         if (err) throw err;
         let rezultat = csvToJsonAktivnosti(data.toString());
-        let filtrirajPoNazivu = function (naziv) {
-            return naziv === req.params.naziv;
+        let filtrirajPoNazivu = function (aktivnost) {
+            return aktivnost.naziv === req.params.naziv;
         };
         res.json(rezultat.filter(filtrirajPoNazivu));
     });
@@ -88,7 +88,7 @@ app.post('/predmet', function (req, res) {
     fs.readFile('predmeti.txt', function (err, data) {
         if (err) throw err;
         let predmeti = csvToJsonPredmeti(data.toString());
-        if (validacija.postojiPredmet(predmeti, req.body.naziv)) {
+        if (validacija.postojiPredmet(predmeti, req.body)) {
             res.json({message: "Naziv predmeta postoji!"});
         } else {
             fs.appendFile('predmeti.txt', req.body.naziv + "\r\n", function (err) {

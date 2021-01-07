@@ -1,12 +1,12 @@
-async function posalji(url, data){
+async function posalji(url, data) {
     const response = await fetch(url, {
         method: 'POST',
-        headers:{
+        headers: {
             "Content-Type": "application/json;charset=UTF-8"
         },
         body: JSON.stringify(data)
     });
-    return  response.json();
+    return response.json();
 }
 
 function dodajAktivnost() {
@@ -20,20 +20,17 @@ function dodajAktivnost() {
         kraj: Number.parseFloat(document.getElementById('v_kraja').value),
         dan: document.getElementById('dan').value
     };
-    console.log(predmet);
-    console.log(aktivnost);
-    posalji('/predmet',predmet).then(function (resPred){
-        posalji('/aktivnost',aktivnost).then(function (resAkt){
-            if(resAkt.message === "Uspješno dodana aktivnost!"){
-                if(resPred.message === "Uspješno dodan predmet!"){
+    posalji('/predmet', predmet).then(function (resPred) {
+        posalji('/aktivnost', aktivnost).then(function (resAkt) {
+            if (resAkt.message === "Uspješno dodana aktivnost!") {
+                if (resPred.message === "Uspješno dodan predmet!") {
                     dodajPredmetUListu(predmet);
                 }
                 dodajAktivnostUListu(aktivnost);
                 alert("Uspješno dodavanje aktivnosti!");
-            }
-            else{
+            } else {
                 let delXmlHttp = new XMLHttpRequest();
-                delXmlHttp.open("DELETE","/predmet/"+predmet.naziv,true);
+                delXmlHttp.open("DELETE", "/predmet/" + predmet.naziv, true);
                 delXmlHttp.send();
             }
         });
@@ -42,18 +39,18 @@ function dodajAktivnost() {
     return false;
 }
 
-function dodajAktivnostUListu(a){
+function dodajAktivnostUListu(a) {
     let liAkt = document.createElement('li');
     liAkt.classList.add('listEl');
-    liAkt.innerText=a.naziv+", "+a.tip+", "+a.pocetak+"-"+a.kraj+", "+a.dan;
+    liAkt.innerText = a.naziv + ", " + a.tip + ", " + a.pocetak + "-" + a.kraj + ", " + a.dan;
     let ulAkt = document.getElementById('aktivnosti');
     ulAkt.appendChild(liAkt);
 }
 
-function dodajPredmetUListu(p){
+function dodajPredmetUListu(p) {
     let liPred = document.createElement('li');
     liPred.classList.add('listEl');
-    liPred.innerText=p.naziv;
+    liPred.innerText = p.naziv;
     let ulPred = document.getElementById('predmeti');
     ulPred.appendChild(liPred);
 }
@@ -62,7 +59,7 @@ function ucitajListe() {
     let xmlHttpPred = new XMLHttpRequest();
     xmlHttpPred.onreadystatechange = function () {
         if (this.readyState === 4 && this.status === 200) {
-            let predmeti=JSON.parse(this.response);
+            let predmeti = JSON.parse(this.response);
             predmeti.forEach(dodajPredmetUListu);
         }
     }
@@ -72,7 +69,7 @@ function ucitajListe() {
     let xmlHttpAkt = new XMLHttpRequest();
     xmlHttpAkt.onreadystatechange = function () {
         if (this.readyState === 4 && this.status === 200) {
-            let aktivnosti=JSON.parse(this.response);
+            let aktivnosti = JSON.parse(this.response);
             aktivnosti.forEach(dodajAktivnostUListu);
         }
     }

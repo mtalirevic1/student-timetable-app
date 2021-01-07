@@ -68,12 +68,14 @@ app.get('/predmeti', function (req, res) {
         res.json(csvToJsonPredmeti(data.toString()));
     });
 });
+
 app.get('/aktivnosti', function (req, res) {
     fs.readFile('aktivnosti.txt', function (err, data) {
         if (err) throw err;
         res.json(csvToJsonAktivnosti(data.toString()));
     });
 });
+
 app.get('/predmet/:naziv/aktivnost/', function (req, res) {
     fs.readFile('aktivnosti.txt', function (err, data) {
         if (err) throw err;
@@ -84,6 +86,7 @@ app.get('/predmet/:naziv/aktivnost/', function (req, res) {
         res.json(rezultat.filter(filtrirajPoNazivu));
     });
 });
+
 app.post('/predmet', function (req, res) {
     fs.readFile('predmeti.txt', function (err, data) {
         if (err) throw err;
@@ -98,7 +101,7 @@ app.post('/predmet', function (req, res) {
         }
     });
 });
-//{naziv:string,tip:string,pocetak:integer,kraj:integer,dan:string}
+
 app.post('/aktivnost', function (req, res) {
     fs.readFile('aktivnosti.txt', function (err, data) {
         if (err) throw err;
@@ -115,6 +118,7 @@ app.post('/aktivnost', function (req, res) {
         }
     });
 });
+
 app.delete('/aktivnost/:naziv', function (req, res) {
     fs.readFile('aktivnosti.txt', function (err, data) {
         if (err) {
@@ -140,6 +144,7 @@ app.delete('/aktivnost/:naziv', function (req, res) {
         }
     });
 });
+
 app.delete('/predmet/:naziv', function (req, res) {
     fs.readFile('predmeti.txt', function (err, data) {
         if (err) {
@@ -165,6 +170,7 @@ app.delete('/predmet/:naziv', function (req, res) {
         }
     });
 });
+
 app.delete('/all', function (req, res) {
     fs.writeFile('aktivnosti.txt', "", function (err) {
         if (err) {
@@ -180,4 +186,5 @@ app.delete('/all', function (req, res) {
         }
     });
 });
+
 module.exports = app.listen(3000);

@@ -28,7 +28,7 @@ function dodajAktivnost() {
                 }
                 dodajAktivnostUListu(aktivnost);
                 alert("Uspješno dodavanje aktivnosti!");
-            } else {
+            } else if(resPred.message === "Uspješno dodan predmet!") {
                 let delXmlHttp = new XMLHttpRequest();
                 delXmlHttp.open("DELETE", "/predmet/" + predmet.naziv, true);
                 delXmlHttp.send();

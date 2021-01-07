@@ -16,8 +16,8 @@ function csvToJsonTestni(csvString) {
     let toJson = function (slucajString) {
         let balansSrednjih = 0, balansViticastih = 0;
         for (let i = 0; i < slucajString.length; i++) {
-            if(slucajString.charAt(i)==='[') balansSrednjih++;
-            if(slucajString.charAt(i)===']') balansSrednjih--;
+            if(slucajString.charAt(i)==='[') balansSrednjih++; //izmedju zagrada zarezi odvajaju objekte i atribute
+            if(slucajString.charAt(i)===']') balansSrednjih--; // svi zarezi van zagrada se trebaju splitati u clanove niza
             if(slucajString.charAt(i)==='{') balansViticastih++;
             if(slucajString.charAt(i)==='}') balansViticastih--;
             if (slucajString.charAt(i) === ',') {
@@ -37,7 +37,10 @@ function csvToJsonTestni(csvString) {
     return rezultat;
 }
 
+//testovi se pokrecu sa "npm test"
+
 function izvrsiTest(ts, i) {
+    //svi slucajevi linije csv dokumenta su pokriveni jednim testom sa vise uslova, izvrsava se za svaku liniju
     describe("Test " + (i + 1) + ", Method: " + ts.metoda + ", Route: " + ts.ruta + ", Input: " + ts.ulaz, function () {
         it("should give the following output: " + ts.izlaz, function (done) {
             if (ts.metoda === 'GET' && (ts.ruta === '/predmet' || ts.ruta === '/aktivnost')) {

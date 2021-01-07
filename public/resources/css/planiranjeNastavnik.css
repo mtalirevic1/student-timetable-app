@@ -20,27 +20,42 @@ body{
 }
 
 form{
-    width: 60%;
+    width: 40%;
     height: 50%;
 }
 
-input, select, label{
+input, select, label, input[type=button]{
     display: inline-block;
     font-family: Calibri, sans-serif;
     color: #466bab;
 }
 
-input, select{
+input, select, input[type=button]{
     padding: 0.5%
 }
 
 label{
-    width: 30%;
     text-align: right;
-    font-size: 2em;
     padding: 2%;
-    margin-left: 10%;
 }
+
+.formLabel{
+    width: 20%;
+    font-size: 2em;
+}
+
+.listaLabel{
+    width: 10%;
+    font-size: 3em;
+}
+
+.listEl{
+    font-family: Calibri, sans-serif;
+    color: #466bab;
+    font-size: 2em;
+    list-style: none;
+}
+
 
 ul.forma{
     list-style: none;
@@ -53,7 +68,7 @@ ul.forma{
         width: 100%;
         height: 90%;
     }
-    label {
+    .formLabel {
         margin-top: 4%;
         text-align: left;
         margin-left: 0;
@@ -61,5 +76,8 @@ ul.forma{
 
     input, select{
         margin-right: 60%
+    }
+    #predmeti, #aktivnosti, .listaLabel{
+        display: none;
     }
 }

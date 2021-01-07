@@ -1,3 +1,7 @@
+DELETE,/all,null,{\"message\":\"Uspješno obrisan sadržaj datoteka!\"}
+POST,/predmet,{\"naziv\":\"OOI\"},{\"message\":\"Uspješno dodan predmet!\"}
+POST,/predmet,{\"naziv\":\"PJP\"},{\"message\":\"Uspješno dodan predmet!\"}
+POST,/aktivnost,{\"naziv\":\"OOI\",\"tip\":\"predavanje\",\"pocetak\":13,\"kraj\":15,\"dan\":\"Ponedjeljak\"},{\"message\":\"Uspješno dodana aktivnost!\"}
 GET,/predmet,null,[{\"naziv\":\"OOI\"},{\"naziv\":\"PJP\"}]
 POST,/predmet,{\"naziv\":\"RMA\"},{\"message\":\"Uspješno dodan predmet!\"}
 POST,/predmet,{\"naziv\":\"RMA\"},{\"message\":\"Naziv predmeta postoji!\"}

@@ -5,6 +5,7 @@
     <title>Planiranje nastavnik</title>
     <link rel="stylesheet" type="text/css" href="resources/css/planiranjeNastavnik.css" media="screen"/>
     <link rel="stylesheet" type="text/css" href="resources/css/general.css" media="screen"/>
+    <script src="resources/js/ajaxAktivnosti.js" type="text/javascript"></script>
 </head>
 <body>
 <ul class="meni">
@@ -17,36 +18,46 @@
     <form>
         <ul class="forma">
             <li>
-                <label for="naziv">Naziv predmeta:</label>
+                <label class="formLabel" for="naziv">Naziv predmeta:</label>
                 <input type="text" id="naziv">
             </li>
             <li>
-                <label for="tip">Tip:</label>
+                <label class="formLabel" for="tip">Tip:</label>
                 <select id="tip" size="1">
                     <option value="predavanje">Predavanje</option>
-                    <option value="vjezbe">Vježbe</option>
+                    <option value="vježbe">Vježbe</option>
                 </select>
             </li>
             <li>
-                <label for="v_pocetka">Vrijeme početka:</label>
-                <input type="time" id="v_pocetka">
+                <label class="formLabel" for="v_pocetka">Vrijeme početka:</label>
+                <input type="text" id="v_pocetka">
             </li>
             <li>
-                <label for="v_kraja">Vrijeme kraja:</label>
-                <input type="time" id="v_kraja">
+                <label class="formLabel" for="v_kraja">Vrijeme kraja:</label>
+                <input type="text" id="v_kraja">
             </li>
             <li>
-                <label for="dan">Dan u sedmici:</label>
+                <label class="formLabel" for="dan">Dan u sedmici:</label>
                 <select id="dan" size="1">
-                    <option value="pon">Ponedjeljak</option>
-                    <option value="uto">Utorak</option>
-                    <option value="sri">Srijeda</option>
-                    <option value="cet">Četvrtak</option>
-                    <option value="pet">Petak</option>
+                    <option value="Ponedjeljak">Ponedjeljak</option>
+                    <option value="Utorak">Utorak</option>
+                    <option value="Srijeda">Srijeda</option>
+                    <option value="Četvrtak">Četvrtak</option>
+                    <option value="Petak">Petak</option>
                 </select>
+            </li>
+            <li>
+                <label class="formLabel" for="subButton">Potvrda:</label>
+                <input type="button" id="subButton" value="Dodaj aktivnost" onclick="dodajAktivnost()">
             </li>
         </ul>
     </form>
+    <label class="listaLabel" for="predmeti">Predmeti</label>
+    <ul id="predmeti">
+    </ul>
+    <label class="listaLabel" for="aktivnosti">Aktivnosti</label>
+    <ul id="aktivnosti">
+    </ul>
 </div>
 </body>
 </html>

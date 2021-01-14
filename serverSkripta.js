@@ -193,8 +193,202 @@ app.delete('/v1/all', function (req, res) {
 //V2
 
 //GET metode
-app.get('/v2/predmet/:naziv', function (req,res){
-    upiti.dajPredmetPoNazivu(req.params.naziv, function (resultSet){
+app.get('/v2/predmet/:id', function (req, res) {
+    upiti.dajPredmetPoId(req.params.id, function (resultSet) {
+        res.json(resultSet);
+    });
+});
+
+app.get('/v2/aktivnost/:id', function (req, res) {
+    upiti.dajAktivnostPoId(req.params.id, function (resultSet) {
+        res.json(resultSet);
+    });
+});
+
+app.get('/v2/grupa/:id', function (req, res) {
+    upiti.dajGrupuPoId(req.params.id, function (resultSet) {
+        res.json(resultSet);
+    });
+});
+
+app.get('/v2/dan/:id', function (req, res) {
+    upiti.dajDanPoId(req.params.id, function (resultSet) {
+        res.json(resultSet);
+    });
+});
+
+app.get('/v2/tip/:id', function (req, res) {
+    upiti.dajTipPoId(req.params.id, function (resultSet) {
+        res.json(resultSet);
+    });
+});
+
+app.get('/v2/student/:id', function (req, res) {
+    upiti.dajStudentaPoId(req.params.id, function (resultSet) {
+        res.json(resultSet);
+    });
+});
+
+app.get('/v2/predmeti', function (req, res) {
+    upiti.dajPredmete(function (resultSet) {
+        res.json(resultSet);
+    });
+});
+
+app.get('/v2/studenti', function (req, res) {
+    upiti.dajStudente(function (resultSet) {
+        res.json(resultSet);
+    });
+});
+
+app.get('/v2/aktivnosti', function (req, res) {
+    upiti.dajAktivnosti(function (resultSet) {
+        res.json(resultSet);
+    });
+});
+
+app.get('/v2/tipovi', function (req, res) {
+    upiti.dajTipove(function (resultSet) {
+        res.json(resultSet);
+    });
+});
+
+app.get('/v2/dani', function (req, res) {
+    upiti.dajDane(function (resultSet) {
+        res.json(resultSet);
+    });
+});
+
+app.get('/v2/grupe', function (req, res) {
+    upiti.dajGrupe(function (resultSet) {
+        res.json(resultSet);
+    });
+});
+
+app.get('/v2/studentiGrupe', function (req, res) {
+    upiti.dajStudentePoGrupama(function (resultSet) {
+        res.json(resultSet);
+    });
+});
+//POST metode
+app.post('/v2/predmet', function (req, res) {
+    upiti.kreirajPredmet(req.body, function (resultSet) {
+        res.json(resultSet);
+    });
+});
+
+app.post('/v2/aktivnost', function (req, res) {
+    upiti.kreirajAktivnost(req.body, function (resultSet) {
+        res.json(resultSet);
+    });
+});
+
+app.post('/v2/grupa', function (req, res) {
+    upiti.kreirajGrupu(req.body, function (resultSet) {
+        res.json(resultSet);
+    });
+});
+
+app.post('/v2/dan', function (req, res) {
+    upiti.kreirajDan(req.body, function (resultSet) {
+        res.json(resultSet);
+    });
+});
+
+app.post('/v2/tip', function (req, res) {
+    upiti.kreirajTip(req.body, function (resultSet) {
+        res.json(resultSet);
+    });
+});
+
+app.post('/v2/student', function (req, res) {
+    upiti.kreirajStudenta(req.body, function (resultSet) {
+        res.json(resultSet);
+    });
+});
+
+app.post('/v2/student/:sid/grupa/:gid', function (req, res) {
+    upiti.dodajStudentaUGrupu(req.params.sid, req.params.gid, function (resultSet) {
+        res.json(resultSet);
+    });
+});
+
+//PUT metode
+app.put('/v2/predmet/:id', function (req, res) {
+    upiti.azurirajPredmet(req.params.id, req.body, function (resultSet) {
+        res.json(resultSet);
+    });
+});
+
+app.put('/v2/aktivnost/:id', function (req, res) {
+    upiti.azurirajAktivnost(req.params.id, req.body, function (resultSet) {
+        res.json(resultSet);
+    });
+});
+
+app.put('/v2/grupa/:id', function (req, res) {
+    upiti.azurirajGrupu(req.params.id, req.body, function (resultSet) {
+        res.json(resultSet);
+    });
+});
+
+app.put('/v2/dan/:id', function (req, res) {
+    upiti.azurirajDan(req.params.id, req.body, function (resultSet) {
+        res.json(resultSet);
+    });
+});
+
+app.put('/v2/tip/:id', function (req, res) {
+    upiti.azurirajTip(req.params.id, req.body, function (resultSet) {
+        res.json(resultSet);
+    });
+});
+
+app.put('/v2/student/:id', function (req, res) {
+    upiti.azurirajStudenta(req.params.id, req.body, function (resultSet) {
+        res.json(resultSet);
+    });
+});
+
+//DELETE metode
+app.delete('/v2/predmet/:id', function (req, res) {
+    upiti.obrisiPredmet(req.params.id, function (resultSet) {
+        res.json(resultSet);
+    });
+});
+
+app.delete('/v2/aktivnost/:id', function (req, res) {
+    upiti.obrisiAktivnost(req.params.id, function (resultSet) {
+        res.json(resultSet);
+    });
+});
+
+app.delete('/v2/grupa/:id', function (req, res) {
+    upiti.obrisiGrupu(req.params.id, function (resultSet) {
+        res.json(resultSet);
+    });
+});
+
+app.delete('/v2/dan/:id', function (req, res) {
+    upiti.obrisiDan(req.params.id, function (resultSet) {
+        res.json(resultSet);
+    });
+});
+
+app.delete('/v2/tip/:id', function (req, res) {
+    upiti.obrisiTip(req.params.id, function (resultSet) {
+        res.json(resultSet);
+    });
+});
+
+app.delete('/v2/student/:id', function (req, res) {
+    upiti.obrisiStudenta(req.params.id, function (resultSet) {
+        res.json(resultSet);
+    });
+});
+
+app.delete('/v2/student/:sid/grupa/:gid', function (req, res) {
+    upiti.izbaciStudentaIzGrupe(req.params.sid, req.params.gid, function (resultSet) {
         res.json(resultSet);
     });
 });

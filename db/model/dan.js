@@ -6,5 +6,5 @@ module.exports = function(sequelize,DataTypes){
             type: Sequelize.STRING,
             allowNull: false
         }
-    });
+    },{freezeTableName: true});
 };

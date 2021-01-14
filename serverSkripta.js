@@ -3,6 +3,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const fs = require('fs');
 const app = express();
+const upiti = require('./db/upiti.js');
 app.use(express.static('public'));
 app.use(bodyParser.json());
 
@@ -62,6 +63,8 @@ function jsonToCsvPredmeti(jsonNiz) {
     return rezultat;
 }
 
+//V1
+
 app.get('/predmeti', function (req, res) {
     fs.readFile('predmeti.txt', function (err, data) {
         if (err) throw err;
@@ -87,7 +90,7 @@ app.get('/predmet/:naziv/aktivnost/', function (req, res) {
     });
 });
 
-app.post('/predmet', function (req, res) {
+app.post('/v1/predmet', function (req, res) {
     fs.readFile('predmeti.txt', function (err, data) {
         if (err) throw err;
         let predmeti = csvToJsonPredmeti(data.toString());
@@ -102,7 +105,7 @@ app.post('/predmet', function (req, res) {
     });
 });
 
-app.post('/aktivnost', function (req, res) {
+app.post('/v1/aktivnost', function (req, res) {
     fs.readFile('aktivnosti.txt', function (err, data) {
         if (err) throw err;
         let aktivnosti = csvToJsonAktivnosti(data.toString());
@@ -119,7 +122,7 @@ app.post('/aktivnost', function (req, res) {
     });
 });
 
-app.delete('/aktivnost/:naziv', function (req, res) {
+app.delete('/v1/aktivnost/:naziv', function (req, res) {
     fs.readFile('aktivnosti.txt', function (err, data) {
         if (err) {
             res.json({message: "Greška - aktivnost nije obrisana!"});
@@ -145,7 +148,7 @@ app.delete('/aktivnost/:naziv', function (req, res) {
     });
 });
 
-app.delete('/predmet/:naziv', function (req, res) {
+app.delete('/v1/predmet/:naziv', function (req, res) {
     fs.readFile('predmeti.txt', function (err, data) {
         if (err) {
             res.json({message: "Greška - predmet nije obrisan!"});
@@ -171,7 +174,7 @@ app.delete('/predmet/:naziv', function (req, res) {
     });
 });
 
-app.delete('/all', function (req, res) {
+app.delete('/v1/all', function (req, res) {
     fs.writeFile('aktivnosti.txt', "", function (err) {
         if (err) {
             res.json({message: "Greška - sadržaj datoteka nije moguće obrisati!"});
@@ -184,6 +187,15 @@ app.delete('/all', function (req, res) {
                 }
             });
         }
+    });
+});
+
+//V2
+
+//GET metode
+app.get('/v2/predmet/:naziv', function (req,res){
+    upiti.dajPredmetPoNazivu(req.params.naziv, function (resultSet){
+        res.json(resultSet);
     });
 });
 

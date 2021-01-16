@@ -5,7 +5,6 @@ module.exports = function (sequelize, DataTypes) {
         naziv: {
             type: Sequelize.STRING,
             allowNull: false,
-            unique: true
         },
         pocetak: {
             type: Sequelize.FLOAT,

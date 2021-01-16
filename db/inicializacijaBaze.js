@@ -35,11 +35,6 @@ function inicializacija(){
         db.grupa.create({naziv: 'WT - Grupa 1', predmetId: 2});
         db.grupa.create({naziv: 'WT - Grupa 2', predmetId: 2});
 
-        db.aktivnost.create({naziv: 'WT predavanje', pocetak: 9, kraj: 12, predmetId: 2, grupaId:3, danId: 3, tipId: 1});
-        db.aktivnost.create({naziv: 'WT vježbe', pocetak: 15.5, kraj: 17, predmetId: 2, grupaId:4, danId: 3, tipId: 2});
-        db.aktivnost.create({naziv: 'PJP predavanje', pocetak: 9, kraj: 12, predmetId: 1, grupaId:1, danId: 5, tipId: 1});
-        db.aktivnost.create({naziv: 'PJP vježbe', pocetak: 12, kraj: 13, predmetId: 1, grupaId:2, danId: 1, tipId: 2});
-
         db.studentiGrupa.create({studentId: 1, grupaId: 1});
         db.studentiGrupa.create({studentId: 2, grupaId: 1});
         db.studentiGrupa.create({studentId: 3, grupaId: 2});
@@ -48,5 +43,10 @@ function inicializacija(){
         db.studentiGrupa.create({studentId: 6, grupaId: 3});
         db.studentiGrupa.create({studentId: 7, grupaId: 4});
         db.studentiGrupa.create({studentId: 8, grupaId: 4});
+
+        db.aktivnost.create({naziv: 'WT predavanje', pocetak: 9, kraj: 12, predmetId: 2, grupaId:3, danId: 3, tipId: 1});
+        db.aktivnost.create({naziv: 'WT vježbe', pocetak: 15.5, kraj: 17, predmetId: 2, grupaId:4, danId: 3, tipId: 2});
+        db.aktivnost.create({naziv: 'PJP predavanje', pocetak: 9, kraj: 12, predmetId: 1, grupaId:1, danId: 5, tipId: 1});
+        db.aktivnost.create({naziv: 'PJP vježbe', pocetak: 12, kraj: 13, predmetId: 1, grupaId:2, danId: 1, tipId: 2});
     });
 }

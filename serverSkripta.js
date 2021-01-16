@@ -196,249 +196,395 @@ app.delete('/v1/all', function (req, res) {
 app.get('/v2/predmet/:id', function (req, res) {
     upiti.dajPredmetPoId(req.params.id, function (resultSet) {
         res.json(resultSet);
-    },function(err){res.json({message:"Neuspješno dobavljanje predmeta"})});
+    }, function (err) {
+        res.json({message: "Neuspješno dobavljanje predmeta"})
+    });
 });
 
 app.get('/v2/predmet/naziv/:naziv', function (req, res) {
     upiti.dajPredmetPoNazivu(req.params.naziv, function (resultSet) {
         res.json(resultSet);
-    },function(err){res.json({message:"Neuspješno dobavljanje predmeta"})});
+    }, function (err) {
+        res.json({message: "Neuspješno dobavljanje predmeta"})
+    });
 });
 
 app.get('/v2/aktivnost/:id', function (req, res) {
     upiti.dajAktivnostPoId(req.params.id, function (resultSet) {
         res.json(resultSet);
-    },function(err){res.json({message:"Neuspješno dobavljanje aktivnosti"})});
+    }, function (err) {
+        res.json({message: "Neuspješno dobavljanje aktivnosti"})
+    });
 });
 
 app.get('/v2/grupa/:id', function (req, res) {
     upiti.dajGrupuPoId(req.params.id, function (resultSet) {
         res.json(resultSet);
-    },function(err){res.json({message:"Neuspješno dobavljanje grupe"})});
+    }, function (err) {
+        res.json({message: "Neuspješno dobavljanje grupe"})
+    });
 });
 
 app.get('/v2/dan/:id', function (req, res) {
     upiti.dajDanPoId(req.params.id, function (resultSet) {
         res.json(resultSet);
-    },function(err){res.json({message:"Neuspješno dobavljanje dana"})});
+    }, function (err) {
+        res.json({message: "Neuspješno dobavljanje dana"})
+    });
 });
 
 app.get('/v2/tip/:id', function (req, res) {
     upiti.dajTipPoId(req.params.id, function (resultSet) {
         res.json(resultSet);
-    },function(err){res.json({message:"Neuspješno dobavljanje tipa"})});
+    }, function (err) {
+        res.json({message: "Neuspješno dobavljanje tipa"})
+    });
 });
 
 app.get('/v2/student/:id', function (req, res) {
     upiti.dajStudentaPoId(req.params.id, function (resultSet) {
         res.json(resultSet);
-    },function(err){res.json({message:"Neuspješno dobavljanje studenta"})});
+    }, function (err) {
+        res.json({message: "Neuspješno dobavljanje studenta"})
+    });
 });
 
 app.get('/v2/predmeti', function (req, res) {
     upiti.dajPredmete(function (resultSet) {
         res.json(resultSet);
-    },function(err){res.json({message:"Neuspješno dobavljanje predmeta"})});
+    }, function (err) {
+        res.json({message: "Neuspješno dobavljanje predmeta"})
+    });
 });
 
 app.get('/v2/studenti', function (req, res) {
     upiti.dajStudente(function (resultSet) {
         res.json(resultSet);
-    },function(err){res.json({message:"Neuspješno dobavljanje studenata"})});
+    }, function (err) {
+        res.json({message: "Neuspješno dobavljanje studenata"})
+    });
 });
 
 app.get('/v2/aktivnosti', function (req, res) {
     upiti.dajAktivnosti(function (resultSet) {
         res.json(resultSet);
-    },function(err){res.json({message:"Neuspješno dobavljanje aktivnosti"})});
+    }, function (err) {
+        res.json({message: "Neuspješno dobavljanje aktivnosti"})
+    });
 });
 
 app.get('/v2/tipovi', function (req, res) {
     upiti.dajTipove(function (resultSet) {
         res.json(resultSet);
-    },function(err){res.json({message:"Neuspješno dobavljanje tipova"})});
+    }, function (err) {
+        res.json({message: "Neuspješno dobavljanje tipova"})
+    });
 });
 
 app.get('/v2/dani', function (req, res) {
     upiti.dajDane(function (resultSet) {
         res.json(resultSet);
-    },function(err){res.json({message:"Neuspješno dobavljanje dana"})});
+    }, function (err) {
+        res.json({message: "Neuspješno dobavljanje dana"})
+    });
 });
 
 app.get('/v2/grupe', function (req, res) {
     upiti.dajGrupe(function (resultSet) {
         res.json(resultSet);
-    },function(err){res.json({message:"Neuspješno dobavljanje grupa"})});
+    }, function (err) {
+        res.json({message: "Neuspješno dobavljanje grupa"})
+    });
 });
 
-app.get('/v2/studentiGrupe', function (req, res) {
+app.get('/v2/studenti/grupe', function (req, res) {
     upiti.dajStudentePoGrupama(function (resultSet) {
         res.json(resultSet);
-    },function(err){res.json({message:"Neuspješno dobavljanje studenata po grupama!"})});
+    }, function (err) {
+        res.json({message: "Neuspješno dobavljanje studenata po grupama!"})
+    });
 });
+
+app.get('/v2/student/:id/grupe', function (req, res) {
+    upiti.dajGrupeStudenta(req.params.id, function (resultSet) {
+        res.json(resultSet);
+    }, function (err) {
+        res.json({message: "Neuspješno dobavljanje grupa studenta!"})
+    });
+});
+
 //POST metode
 app.post('/v2/predmet', function (req, res) {
     upiti.kreirajPredmet(req.body, function (resultSet) {
         res.json(resultSet);
-    },function(err){res.json({message:"Neuspješno kreiranje predmeta!"})});
+    }, function (err) {
+        res.json({message: "Neuspješno kreiranje predmeta!"})
+    });
 });
 
 app.post('/v2/aktivnost', function (req, res) {
     upiti.kreirajAktivnost(req.body, function (resultSet) {
         res.json(resultSet);
-    },function(err){res.json({message:"Neuspješno kreiranje aktivnosti!"})});
+    }, function (err) {
+        res.json({message: "Neuspješno kreiranje aktivnosti!"})
+    });
 });
 
 app.post('/v2/grupa', function (req, res) {
     upiti.kreirajGrupu(req.body, function (resultSet) {
         res.json(resultSet);
-    },function(err){res.json({message:"Neuspješno kreiranje grupe!"})});
+    }, function (err) {
+        res.json({message: "Neuspješno kreiranje grupe!"})
+    });
 });
 
 app.post('/v2/dan', function (req, res) {
     upiti.kreirajDan(req.body, function (resultSet) {
         res.json(resultSet);
-    },function(err){res.json({message:"Neuspješno kreiranje dana!"})});
+    }, function (err) {
+        res.json({message: "Neuspješno kreiranje dana!"})
+    });
 });
 
 app.post('/v2/tip', function (req, res) {
     upiti.kreirajTip(req.body, function (resultSet) {
         res.json(resultSet);
-    },function(err){res.json({message:"Neuspješno kreiranje predmeta!"})});
+    }, function (err) {
+        res.json({message: "Neuspješno kreiranje predmeta!"})
+    });
 });
 
 app.post('/v2/student', function (req, res) {
     upiti.kreirajStudenta(req.body, function (resultSet) {
         res.json(resultSet);
+    }, function (err) {
+        res.json({message: "Neuspješno kreiranje studenta!"})
+    });
+});
+
+app.post('/v2/studenti/grupa/:id', function (req, res) {
+    let noviStudenti = req.body.studenti;
+    let grupaId = req.body.grupaId;
+    let resNiz = [], trebaDodati = [], idNiz=[];
+    upiti.dajStudente(function (rezultat) {
+        let postojeciStudenti = [];
+        for (let unos of rezultat) {
+            postojeciStudenti.push({id: unos.id,ime: unos.ime, index: unos.index});
+        }
+        for (let novi of noviStudenti) {
+            let imaIndex = false, imaIme = false;
+            for (let postojeci of postojeciStudenti) {
+                if (!validacija.istaImena(novi, postojeci)) {
+                    if (validacija.istiIndexi(novi, postojeci)) {
+                        imaIndex=true;
+                        resNiz.push("Student " + novi.ime + " nije kreiran jer postoji student " + postojeci.ime + " sa istim indexom " + postojeci.index);
+                        break;
+                    }
+                } else {
+                    imaIme = true;
+                    if(validacija.istiIndexi(novi, postojeci)){
+                        idNiz.push(postojeci.id);
+                    }
+                    break;
+                }
+            }
+            if (!imaIme) {
+                if (!imaIndex) {
+                    trebaDodati.push(novi);
+                }
+            }
+        }
+        upiti.kreirajStudente(trebaDodati, function (result) {
+            for(let unos of result){
+                idNiz.push(unos.id);
+            }
+            let nizPromisea = [];
+            for (let id of idNiz) {
+                nizPromisea.push(upiti.dodajStudentaUGrupu(id, grupaId));
+            }
+            Promise.all(nizPromisea).then(kraj => {
+                res.json(resNiz);
+            }).catch(err => {
+                console.log(err);
+            });
+        }, function (err) {
+            res.json({message: "Neuspješno kreiranje studenata!"});
+            console.log(err);
+        });
+    }, function (err) {
+        res.json({message: "Neuspješno dobavljanje studenata!"});
+        console.log(err);
     });
 });
 
 app.post('/v2/student/:sid/grupa/:gid', function (req, res) {
-    upiti.dodajStudentaUGrupu(req.params.sid, req.params.gid, function (resultSet) {
+    upiti.dodajStudentaUGrupu(req.params.sid, req.params.gid).then(resultSet => {
         res.json(resultSet);
-    },function(err){res.json({message:"Neuspješno dodavanje studenta u grupu!"})});
+    }).catch(err => {
+        res.json("Neuspješno dodavanje studenta u grupu!")
+    });
 });
 
 //PUT metode
 app.put('/v2/predmet/:id', function (req, res) {
     upiti.azurirajPredmet(req.params.id, req.body, function (resultSet) {
         res.json(resultSet);
-    },function(err){res.json({message:"Neuspješno ažuriranje predmeta!"})});
+    }, function (err) {
+        res.json({message: "Neuspješno ažuriranje predmeta!"})
+    });
 });
 
 app.put('/v2/aktivnost/:id', function (req, res) {
     upiti.azurirajAktivnost(req.params.id, req.body, function (resultSet) {
         res.json(resultSet);
-    },function(err){res.json({message:"Neuspješno ažuriranje aktivnosti!"})});
+    }, function (err) {
+        res.json({message: "Neuspješno ažuriranje aktivnosti!"})
+    });
 });
 
 app.put('/v2/grupa/:id', function (req, res) {
     upiti.azurirajGrupu(req.params.id, req.body, function (resultSet) {
         res.json(resultSet);
-    },function(err){res.json({message:"Neuspješno ažuriranje grupe!"})});
+    }, function (err) {
+        res.json({message: "Neuspješno ažuriranje grupe!"})
+    });
 });
 
 app.put('/v2/dan/:id', function (req, res) {
     upiti.azurirajDan(req.params.id, req.body, function (resultSet) {
         res.json(resultSet);
-    },function(err){res.json({message:"Neuspješno ažuriranje dana!"})});
+    }, function (err) {
+        res.json({message: "Neuspješno ažuriranje dana!"})
+    });
 });
 
 app.put('/v2/tip/:id', function (req, res) {
     upiti.azurirajTip(req.params.id, req.body, function (resultSet) {
         res.json(resultSet);
-    },function(err){res.json({message:"Neuspješno ažuriranje tipa!"})});
+    }, function (err) {
+        res.json({message: "Neuspješno ažuriranje tipa!"})
+    });
 });
 
 app.put('/v2/student/:id', function (req, res) {
     upiti.azurirajStudenta(req.params.id, req.body, function (resultSet) {
         res.json(resultSet);
-    },function(err){res.json({message:"Neuspješno ažuriranje studenta!"})});
+    }, function (err) {
+        res.json({message: "Neuspješno ažuriranje studenta!"})
+    });
 });
 
 //DELETE metode
 app.delete('/v2/predmet/:id', function (req, res) {
     upiti.obrisiPredmet(req.params.id, function (resultSet) {
         res.json(resultSet);
-    },function(err){res.json({message:"Neuspješno brisanje predmeta!"})});
+    }, function (err) {
+        res.json({message: "Neuspješno brisanje predmeta!"})
+    });
 });
 
 app.delete('/v2/aktivnost/:id', function (req, res) {
     upiti.obrisiAktivnost(req.params.id, function (resultSet) {
         res.json(resultSet);
-    },function(err){res.json({message:"Neuspješno brisanje aktivnosti!"})});
+    }, function (err) {
+        res.json({message: "Neuspješno brisanje aktivnosti!"})
+    });
 });
 
 app.delete('/v2/grupa/:id', function (req, res) {
     upiti.obrisiGrupu(req.params.id, function (resultSet) {
         res.json(resultSet);
-    },function(err){res.json({message:"Neuspješno brisanje grupe!"})});
+    }, function (err) {
+        res.json({message: "Neuspješno brisanje grupe!"})
+    });
 });
 
 app.delete('/v2/dan/:id', function (req, res) {
     upiti.obrisiDan(req.params.id, function (resultSet) {
         res.json(resultSet);
-    },function(err){res.json({message:"Neuspješno brisanje dana!"})});
+    }, function (err) {
+        res.json({message: "Neuspješno brisanje dana!"})
+    });
 });
 
 app.delete('/v2/tip/:id', function (req, res) {
     upiti.obrisiTip(req.params.id, function (resultSet) {
         res.json(resultSet);
-    },function(err){res.json({message:"Neuspješno brisanje tipa!"})});
+    }, function (err) {
+        res.json({message: "Neuspješno brisanje tipa!"})
+    });
 });
 
 app.delete('/v2/student/:id', function (req, res) {
     upiti.obrisiStudenta(req.params.id, function (resultSet) {
         res.json(resultSet);
-    },function(err){res.json({message:"Neuspješno brisanje studenta!"})});
+    }, function (err) {
+        res.json({message: "Neuspješno brisanje studenta!"})
+    });
 });
 
 app.delete('/v2/student/:sid/grupa/:gid', function (req, res) {
     upiti.izbaciStudentaIzGrupe(req.params.sid, req.params.gid, function (resultSet) {
         res.json(resultSet);
-    },function(err){res.json({message:"Neuspješno izbacivanje studenta iz grupe!"})});
+    }, function (err) {
+        res.json({message: "Neuspješno izbacivanje studenta iz grupe!"})
+    });
 });
 
 app.delete('/v2/studenti', function (req, res) {
-    upiti.obrisiStudente( function (resultSet) {
+    upiti.obrisiStudente(function (resultSet) {
         res.json(resultSet);
-    },function(err){res.json({message:"Neuspješno brisanje studenata!"})});
+    }, function (err) {
+        res.json({message: "Neuspješno brisanje studenata!"})
+    });
 });
 
 app.delete('/v2/tipovi', function (req, res) {
-    upiti.obrisiTipove( function (resultSet) {
+    upiti.obrisiTipove(function (resultSet) {
         res.json(resultSet);
-    },function(err){res.json({message:"Neuspješno brisanje tipova!"})});
+    }, function (err) {
+        res.json({message: "Neuspješno brisanje tipova!"})
+    });
 });
 
 app.delete('/v2/dani', function (req, res) {
-    upiti.obrisiDane( function (resultSet) {
+    upiti.obrisiDane(function (resultSet) {
         res.json(resultSet);
-    },function(err){res.json({message:"Neuspješno brisanje dana!"})});
+    }, function (err) {
+        res.json({message: "Neuspješno brisanje dana!"})
+    });
 });
 
 app.delete('/v2/grupe', function (req, res) {
-    upiti.obrisiGrupe( function (resultSet) {
+    upiti.obrisiGrupe(function (resultSet) {
         res.json(resultSet);
-    },function(err){res.json({message:"Neuspješno brisanje grupa!"})});
+    }, function (err) {
+        res.json({message: "Neuspješno brisanje grupa!"})
+    });
 });
 
 app.delete('/v2/predmet', function (req, res) {
     upiti.obrisiPredmete(function (resultSet) {
         res.json(resultSet);
-    },function(err){res.json({message:"Neuspješno brisanje predmeta!"})});
+    }, function (err) {
+        res.json({message: "Neuspješno brisanje predmeta!"})
+    });
 });
 
 app.delete('/v2/aktivnost', function (req, res) {
     upiti.obrisiAktivnosti(function (resultSet) {
         res.json(resultSet);
-    },function(err){res.json({message:"Neuspješno brisanje aktivnosti!"})});
+    }, function (err) {
+        res.json({message: "Neuspješno brisanje aktivnosti!"})
+    });
 });
 
 app.delete('/v2/studentiGrupe', function (req, res) {
     upiti.izbaciSveStudenteIzGrupa(req.params.sid, req.params.gid, function (resultSet) {
         res.json(resultSet);
-    },function(err){res.json({message:"Neuspješno izbacivanje studenta iz grupe!"})});
+    }, function (err) {
+        res.json({message: "Neuspješno izbacivanje studenta iz grupe!"})
+    });
 });
 
 module.exports = app.listen(3000);

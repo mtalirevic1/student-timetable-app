@@ -67,5 +67,11 @@ module.exports = {
             }
         }
         return true;
+    },
+    istaImena: function (s1, s2){
+        return s1.ime===s2.ime;
+    },
+    istiIndexi: function (s1, s2){
+        return s1.index===s2.index;
     }
 };

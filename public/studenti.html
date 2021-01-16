@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="bs">
+<head>
+    <meta charset="UTF-8">
+    <title>Studenti</title>
+    <link rel="stylesheet" type="text/css" href="resources/css/planiranjeNastavnik.css" media="screen"/>
+    <link rel="stylesheet" type="text/css" href="resources/css/general.css" media="screen"/>
+    <script src="resources/js/ajaxStudenti.js"></script>
+</head>
+<body>
+<ul class="meni">
+    <li><a href="raspored.html">Raspored</a></li>
+    <li><a href="aktivnost.html">Aktivnost</a></li>
+    <li><a href="planiranjeNastavnik.html">Planiranje nastavnik</a></li>
+    <li><a href="podaciStudent.html">Podaci studenata</a></li>
+    <li><a href="studenti.html">Unos studenata</a></li>
+</ul>
+<div class="cont">
+    <form>
+        <ul class="forma">
+            <li>
+                <label class="formLabel" for="studenti">Studenti:</label>
+                <textarea id="studenti"></textarea>
+            </li>
+            <li>
+                <label class="formLabel" for="grupa">Grupa:</label>
+                <select id="grupa" size="1">
+                </select>
+            </li>
+            <li>
+                <label class="formLabel" for="subButton">Potvrda:</label>
+                <input type="button" id="subButton" value="Pošalji" onclick="dodajStudente()">
+            </li>
+        </ul>
+    </form>
+</div>
+</body>
+</html>

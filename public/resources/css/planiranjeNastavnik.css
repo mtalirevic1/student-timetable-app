@@ -30,6 +30,10 @@ input, select, label, input[type=button]{
     color: #466bab;
 }
 
+#studenti{
+    height: 50px;
+}
+
 input, select, input[type=button]{
     padding: 0.5%
 }
